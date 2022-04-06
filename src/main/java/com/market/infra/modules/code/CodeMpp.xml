@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.market.infra.modules.code.CodeMpp"> <!-- 지금 파일 지정 -->
+
+    <resultMap id="resultMapObj" type="com.market.infra.modules.code.Code"></resultMap> <!-- 결과 객체 지정 -->
+
+
+	<sql id = "selectCommon">
+		 FROM 
+		 	prj_mk.infrcodegroup a
+		 WHERE 1=1
+			<choose>
+				<when test="shIfcgDelNy ==1">AND ifcgDelNy = 1</when>
+				<when test="shIfcgDelNy ==0">AND ifcgDelNy = 0</when>
+			</choose>
+			<if test="shIfcgName != null and !shIfcgName.equals('')"> AND ifcgName LIKE concat('%',#{shIfcgName},'%')</if>
+			<choose>
+				<when test="shOption ==1">AND ifcgName LIKE concat('%',#{shValue},'%')</when>
+				<when test="shOption ==2">AND ifcgNameEng LIKE concat('%',#{shValue},'%')</when>
+			</choose>
+	
+	</sql>
+	<select id="selectList" resultMap="resultMapObj">
+			SELECT 
+				a.ifcgSeq
+			    ,a.ifcgName
+			    ,a.ifcgNameEng
+			    ,a.ifcgDelNy
+				<include refid="selectCommon"/>	
+				order by a.ifcgSeq desc	
+				limit #{startRnumForMysql},#{rowNumToShow} 	
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">  <!-- Integer -->
+			SELECT 
+				count(*)
+				<include refid="selectCommon"/>		
+	</select>
+	
+	<insert id="insert">
+			INSERT INTO prj_mk.infrCodeGroup (
+				ifcgName
+				,ifcgDelNy
+				) values (				
+				#{ifcgName}
+				,0
+				)
+	<selectKey resultType="String" keyProperty="ifcgSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>		
+	</insert>
+	
+	
+	<select id="selectOne" resultMap ="resultMapObj">
+			select 
+				a.ifcgSeq
+				,a.ifcgName
+		 	from 
+				prj_mk.infrcodegroup a
+			where 1=1
+				and ifcgSeq = #{ifcgSeq}
+
+	</select>
+	
+	<update id="update">
+			UPDATE
+				prj_mk.infrcodegroup
+			SET 
+				ifcgName = #{ifcgName}
+			WHERE 1=1
+				AND ifcgSeq = #{ifcgSeq}
+	</update>
+	<update id="updateDelete">
+		UPDATE
+			prj_mk.infrCodeGroup
+		SET
+			ifcgDelny = 1
+		WHERE 1=1
+					AND ifcgSeq = #{ifcgSeq}
+	</update>
+	<delete id="delete">
+		DELETE FROM 
+			prj_mk.infrCodeGroup
+		WHERE 1=1
+				AND ifcgSeq = #{ifcgSeq}
+	</delete>
+
+		<!-- code -->
+	<select id="selectListCode" resultMap ="resultMapObj">
+			select 
+				a.ifcdSeq
+				,a.ifcdName
+		 	from 
+				prj_mk.infrcode a
+			where 1=1
+				and ifcdDelNy=0
+			<if test="shIfcgSeq !=null and !shIfcgSeq.eauals('')">AND ifcgSeq =#{shIfcgSeq}</if>
+				<choose>
+				<when test="shOption ==1">AND ifcgName LIKE concat('%',#{shValue},'%')</when>
+				<when test="shOption ==2">AND ifcgNameEng LIKE concat('%',#{shValue},'%')</when>
+			</choose>
+			limit #{startRnumForMysql},#{rowNumToShow} 
+			
+	</select>
+	<insert id="insertCode">
+			INSERT INTO prj_mk.infrCode (
+				ifcdName
+				,ifcdDelNy
+				,ifcdSeq
+				,ifcgSeq
+			) values (
+				#{ifcdName}
+				,0
+				,#{ifcdSeq}
+				,0
+			)
+	</insert>
+	<select id="selectOneCode" resultMap ="resultMapObj">
+			select 
+				a.ifcdSeq
+				,a.ifcdName
+				,a.ifcdDelNy
+			 from 
+				prj_mk.infrcode a
+			where 1=1
+				and ifcdSeq = #{ifcdSeq}
+			
+	</select>
+	<select id="selectOneCodeCount" resultType ="Integer">
+			select 
+				count(*)
+			from 
+				prj_mk.infrcode a
+			where 1=1
+				and ifcdDelNy=0
+			<if test="shIfcgSeq !=null and !shIfcgSeq.eauals('')">AND ifcgSeq =#{shIfcgSeq}</if>
+				<choose>
+				<when test="shOption ==1">AND ifcgName LIKE concat('%',#{shValue},'%')</when>
+				<when test="shOption ==2">AND ifcgNameEng LIKE concat('%',#{shValue},'%')</when>
+			</choose>
+	</select>
+	<update id="updateCode">
+			UPDATE
+				prj_mk.infrcode
+			SET 
+				ifcdName = #{ifcdName}
+			WHERE 1=1
+				AND ifcdSeq = #{ifcdSeq}
+	</update>
+	<select id="selectListForCache" resultMap ="resultMapObj">
+			select 
+				a.ifcdSeq
+				,a.ifcdName
+				,a.ifcgSeq
+		 	from 
+				prj_mk.infrcode a
+			where 1=1
+				and ifcdDelNy = 0
+				and ifcdUseNy = 1
+	</select>
+	
+	
+</mapper>
