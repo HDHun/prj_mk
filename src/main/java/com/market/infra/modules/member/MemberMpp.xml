@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.market.infra.modules.member.MemberMpp">
+
+    <resultMap id="resultMapObj" type="com.market.infra.modules.member.Member"></resultMap>
+
+<!-- select -->
+	<sql id = "selectCommon">
+		 FROM 
+		 	infrmember a
+		 WHERE 1=1
+			<choose>
+				<when test="shIfmmDelNy ==1">AND ifmmDelNy = 1</when>
+				<when test="shIfmmDelNy ==0">AND ifmmDelNy = 0</when>
+			</choose>
+			<if test="shIfmmName != null and !shIfmmName.equals('')"> AND ifmmName LIKE concat('%',#{shIfmmName},'%')</if>
+			<choose>
+				<when test="shOption ==1">AND ifmmName LIKE concat('%',#{shValue},'%')</when>
+				<when test="shOption ==2">AND ifmmId LIKE concat('%',#{shValue},'%')</when>
+			</choose>
+			<choose>
+		<when test="shOptionDate == 1">AND a.regDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+		<when test="shOptionDate == 2">AND a.modDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+		<when test="shOptionDate == 3">AND a.ifmmDob BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+	</choose>
+	
+	</sql>
+	<select id="selectList" resultMap="resultMapObj">
+			SELECT 
+				a.ifmmSeq
+			    ,a.ifmmName
+			    ,a.ifmmPassword
+			    ,a.ifmmId
+			    ,a.ifmmDelNy
+			    ,a.ifmmDob
+				<include refid="selectCommon"/>		
+				limit #{startRnumForMysql},#{rowNumToShow} 	
+						
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">  <!-- Integer -->
+			SELECT 
+				count(*)
+				<include refid="selectCommon"/>		
+	</select>
+	
+	<select id="selectOne" resultMap ="resultMapObj">
+			select 
+				a.ifmmSeq
+				,a.ifmmName
+				,a.ifmmId
+				,a.ifmmPassword
+				,a.ifmmDob
+				,a.ifmmDelNy
+				,b.ifmeEmailFull
+				,c.ifmpNumber
+				,d.ifmaAddress1
+				,d.ifmaAddress2
+				<!-- ,d.ifmaLng
+				,d.ifmaLat -->
+			 from 
+				infrmember a
+			LEFT JOIN infrmemberEmail b on a.ifmmSeq = b.ifmmSeq AND b.ifmeDelNy = 0
+			LEFT JOIN infrmemberPhone c on a.ifmmSeq = c.ifmmSeq AND c.ifmpDelNy = 0
+			LEFT JOIN infrmemberAddress d on a.ifmmSeq = d.ifmmSeq  AND d.ifmaDelNy = 0
+			where 1=1
+				and a.ifmmSeq = #{ifmmSeq}
+	</select>
+	<select id="selectOneLogin" resultMap ="resultMapObj">
+			select 
+				a.ifmmSeq
+				,a.ifmmId
+				,a.ifmmName
+				,a.ifmmPassword
+				,a.ifmmDelNy
+			 from 
+				infrmember a
+			where 1=1
+				and ifmmId = #{ifmmId}
+				and ifmmPassword = #{ifmmPassword}
+	</select>
+	<select id="selectOneLogout" resultMap ="resultMapObj">
+			select 
+				a.ifmmSeq
+				,a.ifmmId
+				,a.ifmmName
+				,a.ifmmPassword
+				,a.ifmmDelNy
+			 from 
+				infrmember a
+			where 1=1
+				and ifmmId = #{ifmmId}
+				and ifmmPassword = #{ifmmPassword}
+	</select>
+<!-- insert -->	
+	<insert id="insert">
+			INSERT INTO infrMember (
+				ifmmId
+				,ifmmPassword
+				,ifmmName
+				<!-- ,ifmmEmailConsentNy
+				,ifmmSmsConsentNy -->
+				,ifmmDelNy
+				,ifmmDob
+				,regDateTime
+				,regDateTimesvr
+			 	,modDateTime
+				,modDateTimesvr
+				
+				) values (
+				#{ifmmId}
+				,#{ifmmPassword}
+				,#{ifmmName}
+				<!-- ,#{ifmmEmailconsentNy}
+				,#{ifmmSmsConsentNy} -->
+				,0
+				<choose>
+				<when test="ifmmDob.equals('')">,NULL</when>
+				<otherwise>,#{ifmmDob}</otherwise>
+				</choose>
+				,#{regDateTime}
+				,#{regDateTimesvr}
+				,#{modDateTime}
+				,#{modDateTimesvr}
+				<!-- ,ifmmGenderCd
+				,ifmmEmailConsentNy
+				,ifmmSmsConsentNy
+				,ifmmPushConsentNy
+				,ifmmDesc
+				,#{ifmmGenderCd}
+				,#{ifmmEmailConsentNy}
+				,#{ifmmSmsConsentNy}
+				,#{ifmmPushConsentNy}
+				,#{ifmmDesc} -->
+				
+				)
+	
+			 	
+				
+				
+		
+	<selectKey resultType="String" keyProperty="ifmmSeq" order="AFTER">
+		SELECT last_insert_id()
+	</selectKey>
+	
+	</insert>
+	<insert id="insertEmail">
+			INSERT INTO infrMemberEmail (
+				ifmeEmailFull
+				,ifmeDelNy
+				,ifmeDefaultNy
+				,ifmmSeq
+				) values (
+				#{ifmeEmailFull}
+				,0
+				,1
+				,#{ifmmSeq}
+				)
+	<selectKey resultType="String" keyProperty="ifmeSeq" order="AFTER">
+		SELECT last_insert_id()
+	</selectKey>
+	
+	</insert>
+	 <insert id="insertAuth">
+			INSERT INTO infrAuth (
+				ifatSeq
+				,ifatOriginalFileName
+				,ifatUuidFileName
+				,ifatDelNy
+				) values (
+				#{ifatSeq}
+				,#{ifatOriginalFileName}
+				,#{ifatUuidFileName}
+				,0
+				)
+	<selectKey resultType="String" keyProperty="ifatSeq" order="AFTER">
+		SELECT last_insert_id()
+	</selectKey>
+	
+	</insert>
+	<insert id="insertAddress">
+			INSERT INTO infrMemberAddress (
+				ifmaAddress1
+				,ifmaAddress2
+				,ifmaZipcode
+				,ifmaDelNy
+				,ifmaDefaultNy
+				,ifmmSeq
+				<!-- ,ifmaLat
+				,ifmaLng -->
+				) values (
+				#{ifmaAddress1}
+				,#{ifmaAddress2}
+				,#{ifmaZipcode}
+				,0
+				,1
+				,#{ifmmSeq}
+				<!-- ,#{ifmaLat}
+				,#{ifmaLng} -->
+				
+				)
+	<selectKey resultType="String" keyProperty="ifmaSeq" order="AFTER">
+		SELECT last_insert_id()
+	</selectKey>
+	
+	</insert>
+	<insert id="insertPhone">
+			INSERT INTO infrMemberPhone (
+				ifmpNumber
+				,ifmpDefaultNy
+				,ifmpDelNy
+				,ifmmSeq
+				) values (
+				#{ifmpNumber}
+				,1
+				,0
+				,#{ifmmSeq}
+				)
+	<selectKey resultType="String" keyProperty="ifmpSeq" order="AFTER">
+		SELECT last_insert_id()
+	</selectKey>
+	
+	</insert>
+<!-- update -->	
+	<update id="update">
+			UPDATE
+				infrmember
+			SET 
+				ifmmPassword = #{ifmmPassword}
+				,ifmmDob = #{ifmmDob}
+			WHERE 1=1
+				AND ifmmSeq = #{ifmmSeq}
+				
+	</update>
+	<update id="updatePhone">
+			UPDATE
+				infrmemberPhone
+			SET 
+				ifmpNumber = #{ifmpNumber}
+			WHERE 1=1
+				AND ifmmSeq = #{ifmmSeq}
+	</update>
+	<update id="updateAddress">
+			UPDATE
+				infrmemberAddress
+			SET 
+				ifmaAddress1 = #{ifmaAddress1}
+				,ifmaAddress2 = #{ifmaAddress2}
+			WHERE 1=1
+				AND ifmmSeq = #{ifmmSeq}
+	</update>
+	<update id="updateEmail">
+			UPDATE
+				infrmemberEmail
+			SET 
+				ifmeEmailFull = #{ifmeEmailFull}
+			WHERE 1=1
+				AND ifmmSeq = #{ifmmSeq}
+	</update>
+		
+	
+	<update id="updateDelete">
+		UPDATE
+			infrMember
+		SET
+			ifmmDelny = 1
+		WHERE 1=1
+					AND ifmmSeq = #{ifmmSeq}
+	</update>
+	<update id="Uelete">
+		UPDATE
+			infrMember
+		SET
+			ifmmDelny = 1
+		WHERE 1=1
+					AND ifmmSeq = #{ifmmSeq}
+	</update>
+<!-- delete -->
+	<delete id="delete">
+		DELETE FROM 
+			infrMember
+		WHERE 1=1
+				AND ifmmSeq = #{ifmmSeq}
+	</delete>
+	
+</mapper>
