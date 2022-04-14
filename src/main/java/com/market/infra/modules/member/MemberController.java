@@ -50,14 +50,13 @@ public class MemberController {
 		  
 		  System.out.println("dto.getFile():" + dto.getFile());
 		  
-		  String fileName = multipartFile.getOriginalFilename(); String ext =
-		  fileName.substring(fileName.lastIndexOf(".")+1); String uuid =
-		  UUID.randomUUID().toString(); String uuidFileName= uuid + "." +ext;
+		  String fileName = multipartFile.getOriginalFilename(); 
+		  String ext = fileName.substring(fileName.lastIndexOf(".")+1); 
+		  String uuid = UUID.randomUUID().toString(); 
+		  String uuidFileName= uuid + "." +ext;
 		  
 		  
-		  multipartFile.transferTo(new File(
-		  "C:/factory/ws_sts_4130/prj_mk/src/main/webapp/resources/uploaded/"
-		  + uuidFileName));
+		  multipartFile.transferTo(new File("C:/factory/ws_sts_4130/prj_mk/src/main/webapp/resources/uploaded/" + uuidFileName));
 		  
 		  
 		  dto.setIfatOriginalFileName(fileName);

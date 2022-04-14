@@ -111,7 +111,7 @@
     <div class="carousel-item active">
       <img src="/infra/resources/images/1.PNG" class="d-block w-100" alt="...">
     </div>
-    <div class="carousel-item">
+    <div class="carousel-item"  >
       <img src="/infra/resources/images/2.PNG" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
@@ -145,7 +145,7 @@
 <div style="width: 100%; text-align: center;">
 
 	<h3 style=" text-align: center; margin-top:100px; margin-bottom:50px;">이 상품 어때요?</h3>
-	<div  style="width: 16rem; display: inline-block;">
+	<div  style="width: 16rem; display: inline-block;" onclick="location.href='';">
 	  <img src="/infra/resources/images/1.1.PNG" class="card-img-top" alt="...">
 	  <div class="card-body">
 	    <p class="card-text" style=" text-align:left;">[칼라마타]엑스트라버진 실버틴 올리브 오일<br>
