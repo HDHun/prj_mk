@@ -19,14 +19,12 @@
 <link href="/infra/resources/_bootstrap/_bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="/infra/resources/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">
 
-
-
 <title>signUp</title>
 <style type="text/css">
 </style>
 </head>
 <body class="container-fluid">
-<form method="post" action="" id="formList">
+<form method="post" action="infra/member/signUp" id="formList">
 	<p style=" float: right;  margin-top : 10px; margin-right:50px; font-size: 8px;">
 		<a style="color: black; text-decoration-line:none;" href="javascript:goSignUp();">회원가입</a> | 
 		<a style="color: black; text-decoration-line:none;" href="javascript:goLogIn();">로그인</a>  |  
@@ -115,14 +113,14 @@
 		<table class="table" style="margin-right:auto; margin-left:auto;">
 			<tr>
 				<td style="text-align: right; vertical-align:middle; font-weight: bold; border-bottom: none;">아이디</td>
-				<td style=" border-bottom: none; width: 400px;"><input type="text" class="form-control" id="id" placeholder="아이디를 입력해주세요." style="width:400px; height:55px;"></td>
+				<td style=" border-bottom: none; width: 400px;"><input type="text" class="form-control" id="ifmmId" placeholder="아이디를 입력해주세요." style="width:400px; height:55px;"></td>
 				<td style=" border-bottom: none; vertical-align:middle;"><button class="btn btn" style=" color: purple; border-color: purple; font-weight: bold; height: 50px;" type="button ">중복확인</button></td>
 			
 			</tr>
 		
 			<tr>
 				<td style="text-align: right;  vertical-align:middle; font-weight: bold; border-bottom: none;">비밀번호</td>
-				<td style=" border-bottom: none;"><input type="password" class="form-control" id="password" placeholder="비밀번호를 입력해주세요." style="width:400px; height:55px;"></td>
+				<td style=" border-bottom: none;"><input type="password" class="form-control" id="ifmmPassword" placeholder="비밀번호를 입력해주세요." style="width:400px; height:55px;"></td>
 			</tr>
 		
 			<tr>
@@ -132,26 +130,82 @@
 		
 			<tr>
 				<td style="text-align: right;  vertical-align:middle; font-weight: bold; border-bottom: none;">이름</td>
-				<td style=" border-bottom: none;"><input type="text" class="form-control" id="name" placeholder="이름을 입력해주세요." style="width:400px; height:55px;"></td>
+				<td style=" border-bottom: none;"><input type="text" class="form-control" id="ifmmName" placeholder="이름을 입력해주세요." style="width:400px; height:55px;"></td>
 			</tr>
 		
 			<tr>
 				<td style="text-align: right;  vertical-align:middle; font-weight: bold; border-bottom: none;">이메일</td>
-				<td style=" border-bottom: none;"><input type="text" class="form-control" id="email" placeholder="예: marketkurly@kurly.com" style="width:400px; height:55px;"></td>
+				<td style=" border-bottom: none;"><input type="text" class="form-control" id="ifmeEmailFull" placeholder="예: marketkurly@kurly.com" style="width:400px; height:55px;"></td>
 				<td style=" border-bottom: none; vertical-align:middle;"><button class="btn btn" style="color: purple; border-color: purple; font-weight: bold; height: 50px;" type="button">중복확인</button></td>
 			
 			</tr>
 		
 			<tr>
 				<td style="text-align: right;  vertical-align:middle; font-weight: bold; border-bottom: none;">휴대폰</td>
-				<td style=" border-bottom: none;"><input type="text" class="form-control" id="phoneNum" placeholder="숫자만 입력해주세요." style="width:400px; height:55px;"></td>
+				<td style=" border-bottom: none;"><input type="text" class="form-control" id="ifmpNumber" placeholder="숫자만 입력해주세요." style="width:400px; height:55px;"></td>
 				<td style=" border-bottom: none; vertical-align:middle;"><button class="btn btn" style="color: purple; border-color: purple; font-weight: bold; height: 50px;" type="button">인증번호받기</button></td>
 			</tr>
 		
 			<tr>
 				<td style="text-align: right;  vertical-align:middle; font-weight: bold; border-bottom: none;">주소</td>
-				<td style=" border-bottom: none; vertical-align:middle;"><button class="btn btn" style="color: purple; border-color: purple; font-weight: bold; height: 50px; width: 400px;" type="button">주소검색</button></td>
+				<td style=" border-bottom: none; vertical-align:middle;">
+				<button class="btn btn" onclick="sample6_execDaumPostcode()" style="color: purple; border-color: purple; font-weight: bold; height: 50px; width: 400px;" type="button">주소검색</button>
+				<input type="text" class="form-control" id="ifmaAddress1" name="ifmaAddress1" placeholder="주소를 입력해주세요." style="width:400px; height:55px;">
+				<input type="hidden" class="form-control" id="ifmaZipcode" name="ifmaZipcode">
+				<input type="text" class="form-control" id="ifmaAddress2" name="ifmaAddress2" style="width:400px; height:55px;">
+				<input type="text" class="form-control" id="ifmaAddress3" name="ifmaAddress3" placeholder="상세주소를 입력해주세요." style="width:400px; height:55px;">
+				</td>
 			</tr>
+		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+		<script>
+		    function sample6_execDaumPostcode() {
+		        new daum.Postcode({
+		            oncomplete: function(data) {
+		                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+		
+		                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+		                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+		                var addr = ''; // 주소 변수
+		                var extraAddr = ''; // 참고항목 변수
+		
+		                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+		                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+		                    addr = data.roadAddress;
+		                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+		                    addr = data.jibunAddress;
+		                }
+		
+		                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+		                if(data.userSelectedType === 'R'){
+		                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+		                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+		                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+		                        extraAddr += data.bname;
+		                    }
+		                    // 건물명이 있고, 공동주택일 경우 추가한다.
+		                    if(data.buildingName !== '' && data.apartment === 'Y'){
+		                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+		                    }
+		                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+		                    if(extraAddr !== ''){
+		                        extraAddr = ' (' + extraAddr + ')';
+		                    }
+		                    // 조합된 참고항목을 해당 필드에 넣는다.
+		                    document.getElementById("ifmaAddress2").value = extraAddr;
+		                
+		                } else {
+		                    document.getElementById("ifmaAddress2").value = '';
+		                }
+		
+		                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+		                document.getElementById('ifmaZipcode').value = data.zonecode;
+		                document.getElementById("ifmaAddress1").value = addr;
+		                // 커서를 상세주소 필드로 이동한다.
+		                document.getElementById("ifmaAddress3").focus();
+		            }
+		        }).open();
+		    }
+		</script>			
 			<tr>
 				<td style=" border-bottom: none; vertical-align:middle;"></td>
 				<td style=" border-bottom: none; vertical-align:middle; font-size: 12px;">배송지에 따라 상품 정보가 달라질 수 있습니다.</td>
@@ -168,14 +222,53 @@
   					<label class="form-check-label" for="RadioNone" style="margin-right:5%;">선택안함</label>
 				</td>
 			</tr>
-			<tr>
+				<tr>
 				<td style="text-align: right;  vertical-align:middle; font-weight: bold; border-bottom: none;">생년월일</td>
-				<td style="border-bottom-color: black;"><input type="date" class="" id="name" style="width:400px; height:55px;"></td>
+				<td style="border-bottom-color: black;">
+				<input  class="form-control" type="text" style="width:400px; height:55px;" name="ifmmDob" id="ifmmDob" autocomplete="off">
+				<!-- <input type="date" class="" id="birth" style="width:400px; height:55px;"> -->
+				</td>
 			</tr>
 			<tr>
 				<td style="text-align: right;  vertical-align:middle; font-weight: bold; border-bottom: none;">이용약관 동의</td>
-				<td style=" border-bottom: none;"></td>
+				<td style=" border-bottom: none;">
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value=""id="checkboxAgreeAll" name="" style="vertical-align: middle;">
+						<label class="form-check-label" for="flexCheckDefault" style="width: 400px;font-size: 20px; font-weight: bolder;">전체 동의합니다.</label>
+					</div>
+					<div class="form-check" style="margin-top:10px;">
+						<input class="form-check-input" type="checkbox" value=""id="checkboxAgree1" name="" style="vertical-align: middle;">
+						<label class="form-check-label" for="flexCheckDefault" style="width: 400px;">이용 약관 동의(필수)</label>
+					</div>
+					<div class="form-check" style="margin-top:10px;">
+						<input class="form-check-input" type="checkbox" value=""id="checkboxAgree2" name="" style="vertical-align: middle;">
+						<label class="form-check-label" for="flexCheckDefault" style="width: 400px;">개인정보 수집·이용 동의(필수)</label>
+						<br>
+					</div>
+					<div class="form-check" style="margin-top:10px;">
+						<input class="form-check-input" type="checkbox" value=""id="checkboxAgree3" name="" style="vertical-align: middle;">
+						<label class="form-check-label" for="flexCheckDefault" style="width: 400px;">개인정보 수집·이용 동의(선택)</label>
+						<br>
+					</div>
+					<div class="form-check" style="margin-top:10px;">
+						<input class="form-check-input" type="checkbox" value=""id="checkboxAgree4" name="" style="vertical-align: middle;">
+						<label class="form-check-label" for="flexCheckDefault" style="width: 400px;">무료배송,할인쿠폰 등 혜택/정보 수신 동의(선택)</label>
+						<br>
+					</div>
+					<div class="form-check" style="margin-top:10px;">
+						<input class="form-check-input" type="checkbox" value=""id="checkboxAgree5" name="" style="vertical-align: middle;">
+						<label class="form-check-label" for="flexCheckDefault" style="width: 400px;">본인은 만 14세 이상입니다.(필수)</label>
+						<br>
+					</div>
+				</td>
 			</tr>
+			<tr>
+				<td style="text-align: right;  vertical-align:middle; font-weight: bold; border-bottom: none;"></td>
+				<td style=" border-bottom: none; vertical-align:middle;"><button class="btn btn" style="color:white; background-color: purple; font-weight: bold; height: 50px; width: 300px;" type="button">가입하기</button></td>
+			</tr>
+		
+		
+		
 		
 		
 		
@@ -264,7 +357,21 @@ goBasket = function() {
 	$("#formList").attr("action","/infra/order/basket");
 	$("#formList").submit();
 }
-
+$(document).ready(function(){
+	 $("#ifmmDob").datepicker();
+}); 
+$.datepicker.setDefaults({
+    dateFormat: 'yy-mm-dd',
+    prevText: '이전 달',
+    nextText: '다음 달',
+    monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+    monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+    dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+    dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+    dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+    showMonthAfterYear: true,
+    yearSuffix: '년'
+    });
 </script>
 </body>
 </html>

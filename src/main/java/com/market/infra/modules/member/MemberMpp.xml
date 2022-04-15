@@ -186,6 +186,7 @@
 			INSERT INTO infrMemberAddress (
 				ifmaAddress1
 				,ifmaAddress2
+				,ifmaAddress3
 				,ifmaZipcode
 				,ifmaDelNy
 				,ifmaDefaultNy
@@ -195,6 +196,7 @@
 				) values (
 				#{ifmaAddress1}
 				,#{ifmaAddress2}
+				,#{ifmaAddress3}
 				,#{ifmaZipcode}
 				,0
 				,1

@@ -162,12 +162,28 @@
 			<td style="font-size:13px;"><h3>2,980원</h3></td>
 		</tr>
 	</table>
-	<button class="btn container-fluid" style="color: white; background-color: purple; font-weight: bold;" type="button">장바구니 담기</button>
+	<button class="btn" style="color: white; background-color: purple; width:600px; font-weight: bold;" type="button">장바구니 담기</button>
 </rmain>
 
 	    
 <main style="clear: both;">
 </main>
+<div style="margin-left:15%; margin-right:15%;">
+	<ul class="nav nav-tabs justify-content-center" >
+	  <li class="nav-item" style=" border: solid 1px #eee; width: 300px; height: 50px; text-align: center;">
+	    <a class="nav-link" aria-current="page" href="#" style="color: gray;  font-size: 18px; font-weight: bold;">상품설명</a>
+	  </li>
+	  <li class="nav-item" style=" border: solid 1px #eee; width: 300px; height: 50px;  text-align: center;">
+	    <a class="nav-link" href="#" style="color: gray;   font-size: 18px; font-weight: bold;">상세정보</a>
+	  </li>
+	  <li class="nav-item" style="border: solid 1px #eee; width: 300px; height: 50px;  text-align: center;">
+	    <a class="nav-link" href="#" style="color: gray;   font-size: 18px; font-weight: bold;">후기</a>
+	  </li>
+	  <li class="nav-item" style=" border: solid 1px #eee; width: 300px; height: 50px;  text-align: center;">
+	    <a class="nav-link" href="#" style="color: gray;   font-size: 18px; font-weight: bold;">문의</a>
+	  </li>
+	</ul>
+</div>
 
 		
 		
