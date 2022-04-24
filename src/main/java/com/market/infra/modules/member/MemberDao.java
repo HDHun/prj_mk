@@ -20,7 +20,7 @@ public class MemberDao {
 //	@Resource(name = "sqlSession")
 	private SqlSession sqlSession;
 	
-	private static String namespace = "com.junefw.infra.modules.member.MemberMpp";
+	private static String namespace = "com.market.infra.modules.member.MemberMpp";
 
 	
 

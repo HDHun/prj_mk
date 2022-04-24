@@ -93,6 +93,22 @@ public class MemberController {
 		
 		  
 	  }
+	  @RequestMapping(value = "/member/UserInst") 
+	  public String UserInst(Member dto) throws Exception {
+		  
+		 
+			
+		  	service.insert(dto);
+
+			 
+		  
+		 
+		  
+		 
+		  return "redirect:/member/indexView"; 
+		  
+		  
+	  }
 	
 	  
 	  

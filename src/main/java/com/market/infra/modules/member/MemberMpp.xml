@@ -101,55 +101,46 @@
 			INSERT INTO infrMember (
 				ifmmId
 				,ifmmPassword
+				,ifmmPassword2
 				,ifmmName
-				<!-- ,ifmmEmailConsentNy
-				,ifmmSmsConsentNy -->
+				,ifmmGenderCd
+				,ifmmUseConsentNy
+				,ifmmPersonalMustConsentNy
+				,ifmmPersonalConsentNy
+				,ifmmDiscountConsentNy
+				,ifmmAgeConsentNy
 				,ifmmDelNy
 				,ifmmDob
 				,regDateTime
-				,regDateTimesvr
 			 	,modDateTime
-				,modDateTimesvr
 				
 				) values (
 				#{ifmmId}
 				,#{ifmmPassword}
+				,#{ifmmPassword2}
 				,#{ifmmName}
-				<!-- ,#{ifmmEmailconsentNy}
-				,#{ifmmSmsConsentNy} -->
+				,#{ifmmUseConsentNy}
+				,#{ifmmPersonalMustConsentNy}
+				,#{ifmmPersonalConsentNy}
+				,#{ifmmDiscountConsentNy}
+				,#{ifmmAgeConsentNy}
 				,0
 				<choose>
 				<when test="ifmmDob.equals('')">,NULL</when>
 				<otherwise>,#{ifmmDob}</otherwise>
 				</choose>
 				,#{regDateTime}
-				,#{regDateTimesvr}
 				,#{modDateTime}
-				,#{modDateTimesvr}
-				<!-- ,ifmmGenderCd
-				,ifmmEmailConsentNy
-				,ifmmSmsConsentNy
-				,ifmmPushConsentNy
-				,ifmmDesc
-				,#{ifmmGenderCd}
-				,#{ifmmEmailConsentNy}
-				,#{ifmmSmsConsentNy}
-				,#{ifmmPushConsentNy}
-				,#{ifmmDesc} -->
 				
 				)
 	
-			 	
-				
-				
-		
 	<selectKey resultType="String" keyProperty="ifmmSeq" order="AFTER">
 		SELECT last_insert_id()
 	</selectKey>
 	
 	</insert>
 	<insert id="insertEmail">
-			INSERT INTO infrMemberEmail (
+			INSERT INTO infrmemberemail (
 				ifmeEmailFull
 				,ifmeDelNy
 				,ifmeDefaultNy
@@ -166,7 +157,7 @@
 	
 	</insert>
 	 <insert id="insertAuth">
-			INSERT INTO infrAuth (
+			INSERT INTO infrauth (
 				ifatSeq
 				,ifatOriginalFileName
 				,ifatUuidFileName
@@ -183,7 +174,7 @@
 	
 	</insert>
 	<insert id="insertAddress">
-			INSERT INTO infrMemberAddress (
+			INSERT INTO infrmemberaddress (
 				ifmaAddress1
 				,ifmaAddress2
 				,ifmaAddress3
@@ -211,7 +202,7 @@
 	
 	</insert>
 	<insert id="insertPhone">
-			INSERT INTO infrMemberPhone (
+			INSERT INTO infrmemberphone (
 				ifmpNumber
 				,ifmpDefaultNy
 				,ifmpDelNy

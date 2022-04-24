@@ -24,7 +24,7 @@
 </style>
 </head>
 <body class="container-fluid">
-<form method="post" action="infra/member/signUp" id="formList">
+
 	<p style=" float: right;  margin-top : 10px; margin-right:50px; font-size: 8px;">
 		<a style="color: black; text-decoration-line:none;" href="javascript:goSignUp();">회원가입</a> | 
 		<a style="color: black; text-decoration-line:none;" href="javascript:goLogIn();">로그인</a>  |  
@@ -105,7 +105,8 @@
 	    
 	    
 	    <!-- 이모티콘 버튼 -->
-	
+<form method="post" action="/infra/member/UserInst">
+	<input type="hidden" id="ifmmSeq" name ="ifmmSeq">
 	<div style="text-align: center; margin-top:100px;">
 		<h4 style="font-weight:bold; ">회원가입</h4>
 	</div>	
@@ -113,100 +114,51 @@
 		<table class="table" style="margin-right:auto; margin-left:auto;">
 			<tr>
 				<td style="text-align: right; vertical-align:middle; font-weight: bold; border-bottom: none;">아이디</td>
-				<td style=" border-bottom: none; width: 400px;"><input type="text" class="form-control" id="ifmmId" placeholder="아이디를 입력해주세요." style="width:400px; height:55px;"></td>
+				<td style=" border-bottom: none; width: 400px;"><input type="text" class="form-control" id="ifmmId" name="ifmmId" placeholder="아이디를 입력해주세요." style="width:400px; height:55px;"></td>
 				<td style=" border-bottom: none; vertical-align:middle;"><button class="btn btn" style=" color: purple; border-color: purple; font-weight: bold; height: 50px;" type="button ">중복확인</button></td>
 			
 			</tr>
 		
 			<tr>
 				<td style="text-align: right;  vertical-align:middle; font-weight: bold; border-bottom: none;">비밀번호</td>
-				<td style=" border-bottom: none;"><input type="password" class="form-control" id="ifmmPassword" placeholder="비밀번호를 입력해주세요." style="width:400px; height:55px;"></td>
+				<td style=" border-bottom: none;"><input type="password" class="form-control" id="ifmmPassword" name="ifmmPassword" placeholder="비밀번호를 입력해주세요." style="width:400px; height:55px;"></td>
 			</tr>
 		
 			<tr>
 				<td style="text-align: right;  vertical-align:middle; font-weight: bold; border-bottom: none;">비밀번호확인</td>
-				<td style=" border-bottom: none;"><input type="password" class="form-control" id="passwordCheck" placeholder="비밀번호를 한번 더 입력해주세요." style="width:400px; height:55px;"></td>
+				<td style=" border-bottom: none;"><input type="password" class="form-control" id="ifmmPassword2" name="ifmmPassword2" placeholder="비밀번호를 한번 더 입력해주세요." style="width:400px; height:55px;"></td>
 			</tr>
 		
 			<tr>
 				<td style="text-align: right;  vertical-align:middle; font-weight: bold; border-bottom: none;">이름</td>
-				<td style=" border-bottom: none;"><input type="text" class="form-control" id="ifmmName" placeholder="이름을 입력해주세요." style="width:400px; height:55px;"></td>
+				<td style=" border-bottom: none;"><input type="text" class="form-control" id="ifmmName" name="ifmmName" placeholder="이름을 입력해주세요." style="width:400px; height:55px;"></td>
 			</tr>
 		
 			<tr>
 				<td style="text-align: right;  vertical-align:middle; font-weight: bold; border-bottom: none;">이메일</td>
-				<td style=" border-bottom: none;"><input type="text" class="form-control" id="ifmeEmailFull" placeholder="예: marketkurly@kurly.com" style="width:400px; height:55px;"></td>
+				<td style=" border-bottom: none;"><input type="text" class="form-control" id="ifmeEmailFull" name="ifmeEmailFull" placeholder="예: marketkurly@kurly.com" style="width:400px; height:55px;"></td>
 				<td style=" border-bottom: none; vertical-align:middle;"><button class="btn btn" style="color: purple; border-color: purple; font-weight: bold; height: 50px;" type="button">중복확인</button></td>
 			
 			</tr>
 		
 			<tr>
 				<td style="text-align: right;  vertical-align:middle; font-weight: bold; border-bottom: none;">휴대폰</td>
-				<td style=" border-bottom: none;"><input type="text" class="form-control" id="ifmpNumber" placeholder="숫자만 입력해주세요." style="width:400px; height:55px;"></td>
+				<td style=" border-bottom: none;"><input type="text" class="form-control" id="ifmpNumber" name="ifmpNumber" placeholder="숫자만 입력해주세요." style="width:400px; height:55px;"></td>
 				<td style=" border-bottom: none; vertical-align:middle;"><button class="btn btn" style="color: purple; border-color: purple; font-weight: bold; height: 50px;" type="button">인증번호받기</button></td>
 			</tr>
 		
 			<tr>
 				<td style="text-align: right;  vertical-align:middle; font-weight: bold; border-bottom: none;">주소</td>
 				<td style=" border-bottom: none; vertical-align:middle;">
-				<button class="btn btn" onclick="sample6_execDaumPostcode()" style="color: purple; border-color: purple; font-weight: bold; height: 50px; width: 400px;" type="button">주소검색</button>
+				<button class="btn btn" type="button" onclick="sample6_execDaumPostcode()" style="color: purple; border-color: purple; font-weight: bold; height: 50px; width: 400px;">주소검색</button>
 				<input type="text" class="form-control" id="ifmaAddress1" name="ifmaAddress1" placeholder="주소를 입력해주세요." style="width:400px; height:55px;">
 				<input type="hidden" class="form-control" id="ifmaZipcode" name="ifmaZipcode">
 				<input type="text" class="form-control" id="ifmaAddress2" name="ifmaAddress2" style="width:400px; height:55px;">
 				<input type="text" class="form-control" id="ifmaAddress3" name="ifmaAddress3" placeholder="상세주소를 입력해주세요." style="width:400px; height:55px;">
 				</td>
 			</tr>
-		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-		<script>
-		    function sample6_execDaumPostcode() {
-		        new daum.Postcode({
-		            oncomplete: function(data) {
-		                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-		
-		                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-		                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-		                var addr = ''; // 주소 변수
-		                var extraAddr = ''; // 참고항목 변수
-		
-		                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-		                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-		                    addr = data.roadAddress;
-		                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-		                    addr = data.jibunAddress;
-		                }
-		
-		                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-		                if(data.userSelectedType === 'R'){
-		                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-		                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-		                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-		                        extraAddr += data.bname;
-		                    }
-		                    /
-		                    / 건물명이 있고, 공동주택일 경우 추가한다.
-		                    if(data.buildingName !== '' && data.apartment === 'Y'){
-		                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-		                    }
-		                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-		                    if(extraAddr !== ''){
-		                        extraAddr = ' (' + extraAddr + ')';
-		                    }
-		                    // 조합된 참고항목을 해당 필드에 넣는다.
-		                    document.getElementById("ifmaAddress2").value = extraAddr;
-		                
-		                } else {
-		                    document.getElementById("ifmaAddress2").value = '';
-		                }
-		
-		                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-		                document.getElementById('ifmaZipcode').value = data.zonecode;
-		                document.getElementById("ifmaAddress1").value = addr;
-		                // 커서를 상세주소 필드로 이동한다.
-		                document.getElementById("ifmaAddress3").focus();
-		            }
-		        }).open();
-		    }
-		</script>			
+			
+			
 			<tr>
 				<td style=" border-bottom: none; vertical-align:middle;"></td>
 				<td style=" border-bottom: none; vertical-align:middle; font-size: 12px;">배송지에 따라 상품 정보가 달라질 수 있습니다.</td>
@@ -215,12 +167,16 @@
 			<tr>
 				<td style="text-align: right;  vertical-align:middle; font-weight: bold; border-bottom: none;">성별</td>
 				<td style=" border-bottom: none; vertical-align:middle;">
-  					<input class="form-check-input" type="radio" name="RadioSex" id="RadioMale">
-  					<label class="form-check-label" for="RadioMale" style="margin-right:5%;">남성</label>
-  					<input class="form-check-input" type="radio" name="RadioSex" id="RadioFemale">
-  					<label class="form-check-label" for="RadioFemale" style="margin-right:5%;">여성</label>
-  					<input class="form-check-input" type="radio" name="RadioSex" id="RadioNone">
-  					<label class="form-check-label" for="RadioNone" style="margin-right:5%;">선택안함</label>
+  				<select class="form-select form-select-sm" id="ifmmGenderCd" name="ifmmGenderCd">
+						<option value="">::성별::</option>
+							
+						<option value="1">남성</option>	
+							
+						<option value="2">여성</option>	
+							
+						<option value="3">선택 안함</option>	
+							
+					</select>
 				</td>
 			</tr>
 				<tr>
@@ -238,26 +194,26 @@
 						<label class="form-check-label" for="flexCheckDefault" style="width: 400px;font-size: 20px; font-weight: bolder;">전체 동의합니다.</label>
 					</div>
 					<div class="form-check" style="margin-top:10px;">
-						<input class="form-check-input" type="checkbox" value=""id="checkboxAgree1" name="" style="vertical-align: middle;">
+						<input class="form-check-input" type="checkbox" value=""id="ifmmUseConsentNy" name="ifmmUseConsentNy" style="vertical-align: middle;">
 						<label class="form-check-label" for="flexCheckDefault" style="width: 400px;">이용 약관 동의(필수)</label>
 					</div>
 					<div class="form-check" style="margin-top:10px;">
-						<input class="form-check-input" type="checkbox" value=""id="checkboxAgree2" name="" style="vertical-align: middle;">
+						<input class="form-check-input" type="checkbox" value=""id="ifmmPersonalMustConsentNy" name="ifmmPersonalMustConsentNy" style="vertical-align: middle;">
 						<label class="form-check-label" for="flexCheckDefault" style="width: 400px;">개인정보 수집·이용 동의(필수)</label>
 						<br>
 					</div>
 					<div class="form-check" style="margin-top:10px;">
-						<input class="form-check-input" type="checkbox" value=""id="checkboxAgree3" name="" style="vertical-align: middle;">
+						<input class="form-check-input" type="checkbox" value=""id="ifmmPersonalConsentNy" name="ifmmPersonalConsentNy" style="vertical-align: middle;">
 						<label class="form-check-label" for="flexCheckDefault" style="width: 400px;">개인정보 수집·이용 동의(선택)</label>
 						<br>
 					</div>
 					<div class="form-check" style="margin-top:10px;">
-						<input class="form-check-input" type="checkbox" value=""id="checkboxAgree4" name="" style="vertical-align: middle;">
+						<input class="form-check-input" type="checkbox" value=""id="ifmmDiscountConsentNy" name="ifmmDiscountConsentNy" style="vertical-align: middle;">
 						<label class="form-check-label" for="flexCheckDefault" style="width: 400px;">무료배송,할인쿠폰 등 혜택/정보 수신 동의(선택)</label>
 						<br>
 					</div>
 					<div class="form-check" style="margin-top:10px;">
-						<input class="form-check-input" type="checkbox" value=""id="checkboxAgree5" name="" style="vertical-align: middle;">
+						<input class="form-check-input" type="checkbox" value=""id="ifmmAgeConsentNy" name="ifmmAgeConsentNy" style="vertical-align: middle;">
 						<label class="form-check-label" for="flexCheckDefault" style="width: 400px;">본인은 만 14세 이상입니다.(필수)</label>
 						<br>
 					</div>
@@ -265,21 +221,14 @@
 			</tr>
 			<tr>
 				<td style="text-align: right;  vertical-align:middle; font-weight: bold; border-bottom: none;"></td>
-				<td style=" border-bottom: none; vertical-align:middle;"><button class="btn btn" style="color:white; background-color: purple; font-weight: bold; height: 50px; width: 300px;" type="button">가입하기</button></td>
+				<td style=" border-bottom: none; vertical-align:middle;">
+					<button class="btn btn" type="submit" style="color:white; background-color: purple; font-weight: bold; height: 50px; width: 300px;">가입하기</button>
+				</td>
 			</tr>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		</table>
 	</div>
-		
+	
+</form>
 <lsection style="margin-top:10%;float: left; width: 50%;  margin-left:50px;">
 		<div style="float: left; width: 50%; text-align:right; ">
 			<h4 style="display: block;">고객행복센터</h4>
@@ -340,7 +289,7 @@ KURLY CORP. ALL RIGHTS RESERVED</p>
 
 
 </footer>
-</form>
+
 	<script src="/infra/resources/_bootstrap/_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="/infra/resources/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
@@ -373,6 +322,116 @@ $.datepicker.setDefaults({
     showMonthAfterYear: true,
     yearSuffix: '년'
     });
+    
+
+$("#checkboxAgreeAll").click(function() {
+	if($("#checkboxAgreeAll").is(":checked")){
+		$("input[name=ifmmUseConsentNy]").prop("checked", true)
+		$("input[name=ifmmPersonalMustConsentNy]").prop("checked", true)
+		$("input[name=ifmmPersonalConsentNy]").prop("checked", true)
+		$("input[name=ifmmDiscountConsentNy]").prop("checked", true)
+		$("input[name=ifmmAgeConsentNy]").prop("checked", true);
+		} else {
+			$("input[name=ifmmUseConsentNy]").prop("checked", false)
+			$("input[name=ifmmPersonalMustConsentNy]").prop("checked", false)
+			$("input[name=ifmmPersonalConsentNy]").prop("checked", false)
+			$("input[name=ifmmDiscountConsentNy]").prop("checked", false)
+			$("input[name=ifmmAgeConsentNy]").prop("checked", false);
+			
+			}
+});
+
+
+
+if($("#ifmmUseConsentNy").prop("checked")){
+	$("#ifmmUseConsentNy").val(1);
+	
+} else {
+	$("#ifmmUseConsentNy").val(0);
+}
+
+if($("#ifmmPersonalMustConsentNy").prop("checked")){
+	$("#ifmmPersonalMustConsentNy").val(1);
+	
+} else {
+	$("#ifmmPersonalMustConsentNy").val(0);
+}
+
+if($("#ifmmPersonalConsentNy").prop("checked")){
+	$("#ifmmPersonalConsentNy").val(1);
+	
+} else {
+	$("#ifmmPersonalConsentNy").val(0);
+}
+
+if($("#ifmmDiscountConsentNy").prop("checked")){
+	$("#ifmmDiscountConsentNy").val(1);
+	
+} else {
+	$("#ifmmDiscountConsentNy").val(0);
+}
+
+if($("#ifmmAgeConsentNy").prop("checked")){
+	$("#ifmmAgeConsentNy").val(1);
+	
+} else {
+	$("#ifmmAgeConsentNy").val(0);
+}
+
+
+    
 </script>
+	
+		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    function sample6_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+
+                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                if(data.userSelectedType === 'R'){
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if(extraAddr !== ''){
+                        extraAddr = ' (' + extraAddr + ')';
+                    }
+                    // 조합된 참고항목을 해당 필드에 넣는다.
+                    document.getElementById("ifmaAddress2").value = extraAddr;
+                
+                } else {
+                    document.getElementById("ifmaAddress2").value = '';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('ifmaZipcode').value = data.zonecode;
+                document.getElementById("ifmaAddress1").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("ifmaAddress3").focus();
+            }
+        }).open();
+    }
+</script>
+
 </body>
 </html>

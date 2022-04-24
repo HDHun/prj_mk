@@ -12,10 +12,15 @@ public class Member {
 	private Integer ifmmDelNy;
 	private Integer ifmmAdminNy;
 	private String ifmmPassword;
+	private String ifmmPassword2;
+	
+	private String ifmmGenderCd;
+	
 	private String ifmmDob;
-	private Integer ifmmEmailConsentNy;
-	private String ifmmSmsConsentNy;
-	private String ifmmPushConsentNy;
+	private String ifmmUseConsentNy;
+	private String ifmmPersonalMustConsentNy;
+	private String ifmmPersonalConsentNy;
+	private String ifmmDiscountConsentNy;
 	
 	private String regIp;
 	private String regSeq;
@@ -37,11 +42,13 @@ public class Member {
 	private String ifmaTitle;
 	private String ifmaAddress1;
 	private String ifmaAddress2;
+	private String ifmaAddress3;
 	/*
 	 * private double ifmaLat; private double ifmaLng;
 	 */
 	
 	
+
 	private String ifmaZipcode;
 	private String ifmaDelNy;
 	
@@ -88,6 +95,18 @@ public class Member {
 	
 	
 	// getset
+	public String getIfmmGenderCd() {
+		return ifmmGenderCd;
+	}
+	public void setIfmmGenderCd(String ifmmGenderCd) {
+		this.ifmmGenderCd = ifmmGenderCd;
+	}
+	public String getIfmaAddress3() {
+		return ifmaAddress3;
+	}
+	public void setIfmaAddress3(String ifmaAddress3) {
+		this.ifmaAddress3 = ifmaAddress3;
+	}
 	public String getIfatUuidFileName() {
 		return ifatUuidFileName;
 	}
@@ -167,24 +186,7 @@ public class Member {
 	public void setIfmmPassword(String ifmmPassword) {
 		this.ifmmPassword = ifmmPassword;
 	}
-	public Integer getIfmmEmailConsentNy() {
-		return ifmmEmailConsentNy;
-	}
-	public void setIfmmEmailConsentNy(Integer ifmmEmailConsentNy) {
-		this.ifmmEmailConsentNy = ifmmEmailConsentNy;
-	}
-	public String getIfmmSmsConsentNy() {
-		return ifmmSmsConsentNy;
-	}
-	public void setIfmmSmsConsentNy(String ifmmSmsConsentNy) {
-		this.ifmmSmsConsentNy = ifmmSmsConsentNy;
-	}
-	public String getIfmmPushConsentNy() {
-		return ifmmPushConsentNy;
-	}
-	public void setIfmmPushConsentNy(String ifmmPushConsentNy) {
-		this.ifmmPushConsentNy = ifmmPushConsentNy;
-	}
+
 	public String getIfmaSeq() {
 		return ifmaSeq;
 	}
@@ -404,7 +406,12 @@ public class Member {
 	
 	
 	}
-
+	public String getIfmmPassword2() {
+		return ifmmPassword2;
+	}
+	public void setIfmmPassword2(String ifmmPassword2) {
+		this.ifmmPassword2 = ifmmPassword2;
+	}
 	
 	public String getIfmaAddress2() {
 		return ifmaAddress2;
@@ -417,6 +424,38 @@ public class Member {
 	 * ifmaLat) { this.ifmaLat = ifmaLat; } public double getIfmaLng() { return
 	 * ifmaLng; } public void setIfmaLng(double ifmaLng) { this.ifmaLng = ifmaLng; }
 	 */
+	public String getIfmmUseConsentNy() {
+		return ifmmUseConsentNy;
+	}
+	public void setIfmmUseConsentNy(String ifmmUseConsentNy) {
+		this.ifmmUseConsentNy = ifmmUseConsentNy;
+	}
+	public String getIfmmPersonalMustConsentNy() {
+		return ifmmPersonalMustConsentNy;
+	}
+	public void setIfmmPersonalMustConsentNy(String ifmmPersonalMustConsentNy) {
+		this.ifmmPersonalMustConsentNy = ifmmPersonalMustConsentNy;
+	}
+	public String getIfmmPersonalConsentNy() {
+		return ifmmPersonalConsentNy;
+	}
+	public void setIfmmPersonalConsentNy(String ifmmPersonalConsentNy) {
+		this.ifmmPersonalConsentNy = ifmmPersonalConsentNy;
+	}
+	public String getIfmmDiscountConsentNy() {
+		return ifmmDiscountConsentNy;
+	}
+	public void setIfmmDiscountConsentNy(String ifmmDiscountConsentNy) {
+		this.ifmmDiscountConsentNy = ifmmDiscountConsentNy;
+	}
+	public String getIfmmAgeConsentNy() {
+		return ifmmAgeConsentNy;
+	}
+	public void setIfmmAgeConsentNy(String ifmmAgeConsentNy) {
+		this.ifmmAgeConsentNy = ifmmAgeConsentNy;
+	}
+	private String ifmmAgeConsentNy;
+	
 	
 
 
