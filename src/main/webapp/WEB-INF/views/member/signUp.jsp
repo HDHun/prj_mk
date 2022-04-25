@@ -332,51 +332,55 @@ $("#checkboxAgreeAll").click(function() {
 		$("input[name=ifmmDiscountConsentNy]").prop("checked", true)
 		$("input[name=ifmmAgeConsentNy]").prop("checked", true);
 		} else {
-			$("input[name=ifmmUseConsentNy]").prop("checked", false)
+		 	$("input[name=ifmmUseConsentNy]").prop("checked", false)
 			$("input[name=ifmmPersonalMustConsentNy]").prop("checked", false)
 			$("input[name=ifmmPersonalConsentNy]").prop("checked", false)
 			$("input[name=ifmmDiscountConsentNy]").prop("checked", false)
-			$("input[name=ifmmAgeConsentNy]").prop("checked", false);
+			$("input[name=ifmmAgeConsentNy]").prop("checked", false); 
 			
 			}
 });
 
-
-
-if($("#ifmmUseConsentNy").prop("checked")){
+if($("input:checkbox[name=ifmmUseConsentNy]").is(":checked")){
 	$("#ifmmUseConsentNy").val(1);
 	
 } else {
 	$("#ifmmUseConsentNy").val(0);
 }
 
-if($("#ifmmPersonalMustConsentNy").prop("checked")){
+if($("input:checkbox[name=ifmmPersonalMustConsentNy]").is(":checked")){
 	$("#ifmmPersonalMustConsentNy").val(1);
 	
 } else {
 	$("#ifmmPersonalMustConsentNy").val(0);
 }
 
-if($("#ifmmPersonalConsentNy").prop("checked")){
+if($("input:checkbox[name=ifmmPersonalConsentNy]").is(":checked")){
 	$("#ifmmPersonalConsentNy").val(1);
 	
 } else {
 	$("#ifmmPersonalConsentNy").val(0);
 }
 
-if($("#ifmmDiscountConsentNy").prop("checked")){
+if($("input:checkbox[name=ifmmDiscountConsentNy]").is(":checked")){
 	$("#ifmmDiscountConsentNy").val(1);
 	
 } else {
 	$("#ifmmDiscountConsentNy").val(0);
 }
 
-if($("#ifmmAgeConsentNy").prop("checked")){
+if($("input:checkbox[name=ifmmAgeConsentNy]").is(":checked")){
 	$("#ifmmAgeConsentNy").val(1);
 	
 } else {
 	$("#ifmmAgeConsentNy").val(0);
 }
+ 
+
+
+
+
+
 
 
     

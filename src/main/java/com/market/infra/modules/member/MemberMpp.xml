@@ -119,6 +119,7 @@
 				,#{ifmmPassword}
 				,#{ifmmPassword2}
 				,#{ifmmName}
+				,#{ifmmGenderCd}
 				,#{ifmmUseConsentNy}
 				,#{ifmmPersonalMustConsentNy}
 				,#{ifmmPersonalConsentNy}
