@@ -35,50 +35,7 @@ public class MemberController {
 	
 	
 	
-	 @RequestMapping(value = "/product/productRegist")
-	  public String productRegist(Member dto) throws Exception {
-		  
-			/*
-			 * // 입력이 되어야 함 service.insert(dto); service.insertPhone(dto);
-			 * service.insertAddress(dto); service.insertEmail(dto);
-			 * 
-			 * 
-			 * 
-			 * MultipartFile multipartFile = dto.getFile();
-			 * 
-			 * System.out.println("dto.getFile():" + dto.getFile());
-			 * 
-			 * String fileName = multipartFile.getOriginalFilename(); String ext =
-			 * fileName.substring(fileName.lastIndexOf(".")+1); String uuid =
-			 * UUID.randomUUID().toString(); String uuidFileName= uuid + "." +ext;
-			 * 
-			 * 
-			 * multipartFile.transferTo(new
-			 * File("C:/factory/ws_sts_4130/prj_mk/src/main/webapp/resources/uploaded/" +
-			 * uuidFileName));
-			 * 
-			 * 
-			 * dto.setIfatOriginalFileName(fileName); dto.setIfatUuidFileName(uuidFileName);
-			 * 
-			 * service.insertAuth(dto);
-			 */
-			  
-			
-		
-		  return "redirect:/member/indexView";
-	  }
-	  
-	  @RequestMapping(value = "/product/productView")
-	  public String productView(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
-			/*
-			 * System.out.println("vo.getIfmmSeq(): " + vo.getIfmmSeq()); // 디비까지 가서 한 건의
-			 * 데이터를 가져온다. Member item = service.selectOne(vo); // jsp로 데이터를 넘겨준다
-			 * model.addAttribute("item", item);
-			 */
-		  
-		  return "product/productView";
-	  }
-	  
+
 	  @RequestMapping(value = "/member/signUp") 
 	  public String signUp(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 		  

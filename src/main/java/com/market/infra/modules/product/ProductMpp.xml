@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.market.infra.modules.product.MemberMpp">
+
+    <resultMap id="resultMapObj" type="com.market.infra.modules.product.product"></resultMap>
+
+ <insert id="insertItemInfo">
+			INSERT INTO spItemInfo (
+				spiiOriginalName
+				,spiiUuidName
+				,spiiPackageMaterial
+				,spiiStorageMethod
+				,spiiCaution
+				,spiiDesc
+				,spiiDelNy
+				) values (
+			
+				#{spiiOriginalName}
+				,#{spiiUuidName}
+				,#{spiiPackageMaterial}
+				,#{spiiStorageMethod}
+				,#{spiiCaution}
+				,#{spiiDesc}
+				,0
+				)
+	<selectKey resultType="String" keyProperty="spiiSeq" order="AFTER">
+		SELECT last_insert_id()
+	</selectKey>
+	
+	</insert>
+	
+</mapper>
