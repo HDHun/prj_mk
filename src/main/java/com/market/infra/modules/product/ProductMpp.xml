@@ -4,11 +4,11 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.market.infra.modules.product.MemberMpp">
+<mapper namespace="com.market.infra.modules.product.productMpp">
 
-    <resultMap id="resultMapObj" type="com.market.infra.modules.product.product"></resultMap>
+    <resultMap id="resultMapObj" type="com.market.infra.modules.product.Product"></resultMap>
 
- <insert id="insertItemInfo">
+  <insert id="insertItemInfo">
 			INSERT INTO spItemInfo (
 				spiiOriginalName
 				,spiiUuidName
@@ -32,5 +32,5 @@
 	</selectKey>
 	
 	</insert>
-	
+
 </mapper>

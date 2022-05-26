@@ -21,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.market.infra.common.constants.Constants;
 import com.market.infra.common.util.UtilDateTime;
+import com.market.infra.common.util.UtilMail;
 import com.market.infra.modules.code.Code;
 
 
@@ -203,7 +204,7 @@ public class MemberController {
 	  	
 	  	@RequestMapping(value = "/member/indexView")
 		public String indexView() {
-			
+			/* UtilMail.sendMail(); */
 			return "/member/indexView";
 		}
 		
