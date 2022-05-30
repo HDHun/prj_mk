@@ -11,7 +11,7 @@
 <!-- select -->
 	<sql id = "selectCommon">
 		 FROM 
-		 	infrmember a
+		 	infrMember a
 		 WHERE 1=1
 			<choose>
 				<when test="shIfmmDelNy ==1">AND ifmmDelNy = 1</when>
@@ -63,7 +63,7 @@
 				<!-- ,d.ifmaLng
 				,d.ifmaLat -->
 			 from 
-				infrmember a
+				infrMember a
 			LEFT JOIN infrmemberEmail b on a.ifmmSeq = b.ifmmSeq AND b.ifmeDelNy = 0
 			LEFT JOIN infrmemberPhone c on a.ifmmSeq = c.ifmmSeq AND c.ifmpDelNy = 0
 			LEFT JOIN infrmemberAddress d on a.ifmmSeq = d.ifmmSeq  AND d.ifmaDelNy = 0
@@ -78,7 +78,7 @@
 				,a.ifmmPassword
 				,a.ifmmDelNy
 			 from 
-				infrmember a
+				infrMember a
 			where 1=1
 				and ifmmId = #{ifmmId}
 				and ifmmPassword = #{ifmmPassword}
@@ -91,7 +91,7 @@
 				,a.ifmmPassword
 				,a.ifmmDelNy
 			 from 
-				infrmember a
+				infrMember a
 			where 1=1
 				and ifmmId = #{ifmmId}
 				and ifmmPassword = #{ifmmPassword}
@@ -222,7 +222,7 @@
 <!-- update -->	
 	<update id="update">
 			UPDATE
-				infrmember
+				infrMember
 			SET 
 				ifmmPassword = #{ifmmPassword}
 				,ifmmDob = #{ifmmDob}
