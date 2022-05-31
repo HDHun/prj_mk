@@ -118,26 +118,26 @@
 						<label class="form-check-label" for="flexCheckDefault" style="width: 400px;font-size: 20px; font-weight: bolder;">전체 동의합니다.</label>
 					</div>
 					<div class="form-check" style="margin-top:10px;">
-						<input class="form-check-input" type="checkbox" value=""id="ifmmUseConsentNy" name="ifmmUseConsentNy" style="vertical-align: middle;">
+						<input class="form-check-input" type="checkbox" value="1"id="ifmmUseConsentNy1" name="ifmmUseConsentNy" style="vertical-align: middle;">
 						<label class="form-check-label" for="flexCheckDefault" style="width: 400px;">이용 약관 동의(필수)</label>
 					</div>
 					<div class="form-check" style="margin-top:10px;">
-						<input class="form-check-input" type="checkbox" value=""id="ifmmPersonalMustConsentNy" name="ifmmPersonalMustConsentNy" style="vertical-align: middle;">
+						<input class="form-check-input" type="checkbox" value="1"id="ifmmPersonalMustConsentNy1" name="ifmmPersonalMustConsentNy" style="vertical-align: middle;">
 						<label class="form-check-label" for="flexCheckDefault" style="width: 400px;">개인정보 수집·이용 동의(필수)</label>
 						<br>
 					</div>
 					<div class="form-check" style="margin-top:10px;">
-						<input class="form-check-input" type="checkbox" value=""id="ifmmPersonalConsentNy" name="ifmmPersonalConsentNy" style="vertical-align: middle;">
+						<input class="form-check-input" type="checkbox" value="1"id="ifmmPersonalConsentNy1" name="ifmmPersonalConsentNy" style="vertical-align: middle;">
 						<label class="form-check-label" for="flexCheckDefault" style="width: 400px;">개인정보 수집·이용 동의(선택)</label>
 						<br>
 					</div>
 					<div class="form-check" style="margin-top:10px;">
-						<input class="form-check-input" type="checkbox" value=""id="ifmmDiscountConsentNy" name="ifmmDiscountConsentNy" style="vertical-align: middle;">
+						<input class="form-check-input" type="checkbox" value="1"id="ifmmDiscountConsentNy1" name="ifmmDiscountConsentNy" style="vertical-align: middle;">
 						<label class="form-check-label" for="flexCheckDefault" style="width: 400px;">무료배송,할인쿠폰 등 혜택/정보 수신 동의(선택)</label>
 						<br>
 					</div>
 					<div class="form-check" style="margin-top:10px;">
-						<input class="form-check-input" type="checkbox" value=""id="ifmmAgeConsentNy" name="ifmmAgeConsentNy" style="vertical-align: middle;">
+						<input class="form-check-input" type="checkbox" value="1"id="ifmmAgeConsentNy1" name="ifmmAgeConsentNy" style="vertical-align: middle;">
 						<label class="form-check-label" for="flexCheckDefault" style="width: 400px;">본인은 만 14세 이상입니다.(필수)</label>
 						<br>
 					</div>
@@ -268,45 +268,6 @@ $("#checkboxAgreeAll").click(function() {
 			
 			}
 });
-
-if($("input:checkbox[name=ifmmUseConsentNy]").is(":checked")){
-	$("#ifmmUseConsentNy").val(1);
-	
-} else {
-	$("#ifmmUseConsentNy").val(0);
-}
-
-if($("input:checkbox[name=ifmmPersonalMustConsentNy]").is(":checked")){
-	$("#ifmmPersonalMustConsentNy").val(1);
-	
-} else {
-	$("#ifmmPersonalMustConsentNy").val(0);
-}
-
-if($("input:checkbox[name=ifmmPersonalConsentNy]").is(":checked")){
-	$("#ifmmPersonalConsentNy").val(1);
-	
-} else {
-	$("#ifmmPersonalConsentNy").val(0);
-}
-
-if($("input:checkbox[name=ifmmDiscountConsentNy]").is(":checked")){
-	$("#ifmmDiscountConsentNy").val(1);
-	
-} else {
-	$("#ifmmDiscountConsentNy").val(0);
-}
-
-if($("input:checkbox[name=ifmmAgeConsentNy]").is(":checked")){
-	$("#ifmmAgeConsentNy").val(1);
-	
-} else {
-	$("#ifmmAgeConsentNy").val(0);
-}
- 
-
-
-
 
 
 
