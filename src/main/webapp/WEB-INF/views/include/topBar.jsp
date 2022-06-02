@@ -52,7 +52,7 @@
 				            <li><a class="dropdown-item" href="#">가전용품</a></li>
 				            <li><a class="dropdown-item" href="#">반려동물</a></li>
 				            <li><a class="dropdown-item" href="#">베이비·키즈·완구</a></li>
-				            <li><a class="dropdown-item" href="#">컬리의 추천</a></li>
+				            <li><a class="dropdown-item" href="#">컬리의 추천</a></li>  
 				          </ul>
 			        </li>
 					<li class="nav-item">
