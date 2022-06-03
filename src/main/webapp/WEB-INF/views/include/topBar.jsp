@@ -20,7 +20,7 @@
 	</p>
 	<div style="text-align: center; clear: both;">
 		<a href="/infra/member/indexView">
-			<image src="/infra/resources/images/kurly.PNG" style="width: 150px;"></image>
+			<image src ="/infra/resources/images/kurly.PNG" style="width: 150px;"></image>
 		</a>
 	</div>
 	
