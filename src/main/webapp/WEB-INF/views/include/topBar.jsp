@@ -16,7 +16,6 @@
 		<a style="color: black; text-decoration-line:none;" href="#">${sessName}</a>  |
 		<a style="color: black; text-decoration-line:none;" id="btnLogout" href="#">로그아웃</a>  |
 		</c:if> 
-		<a style="color: black; text-decoration-line:none;" href="#">고객센터</a>
 	</p>
 	<div style="text-align: center; clear: both;">
 		<a href="/infra/member/indexView">
