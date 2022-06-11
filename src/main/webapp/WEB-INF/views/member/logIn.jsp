@@ -35,8 +35,8 @@
 		<div class="container-fluid">
 			<div class="row" style="float:none; margin:0 auto;">
 					<div class="col-4 col-md-3" style="float:none; margin:0 auto;">
-						<input type="text" class="form-control" id="ifmmId" name="ifmmId"  placeholder="아이디를 입력해주세요."  style="margin:10px; height:55px;">
-						<input type="password" class="form-control" id="ifmmPassword" name="ifmmPassword" placeholder="비밀번호를 입력해주세요."  style="margin:10px; height:55px;">
+						<input type="text" class="form-control" id="ifmmId" name="ifmmId"  placeholder="아이디를 입력해주세요." value="Huun" style="margin:10px; height:55px;">
+						<input type="password" class="form-control" id="ifmmPassword" name="ifmmPassword" placeholder="비밀번호를 입력해주세요."  value="123" style="margin:10px; height:55px;">
 					
 						<div class="form-check" style="margin-left:10px;">
 							  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
@@ -45,8 +45,8 @@
 							    보안접속
 							  </label>
 							  <div style="float: right;">
-							  <a style="font-size: 12px; color: black; text-decoration-line:none;" href="#">아이디찾기 |</a>
-							  <a style="font-size: 12px; color: black; text-decoration-line:none;" href="#">비밀번호찾기</a>
+							  <a style="font-size: 12px; color: black; text-decoration-line:none;" href="/infra/member/findId">아이디찾기 |</a>
+							  <a style="font-size: 12px; color: black; text-decoration-line:none;" href="/infra/member/findPwd">비밀번호찾기</a>
 							  </div>
 						</div>
 						<div class="d-grid gap-2" style="margin-left:15px;">

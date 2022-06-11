@@ -38,10 +38,10 @@
 		<div class="container-fluid">
 			<div class="row" style="float:none; margin:0 auto;">
 					<div class="col-4 col-md-3" style="float:none; margin:0 auto;">
-							  <label class="form-check-label" for="ifmmName">이름</label>
-						<input type="text" class="form-control" id="ifmmName" placeholder="이름을 입력해주세요." style="margin:10px; height:55px;">
-							  <label class="form-check-label" for="ifmpPhoneNumber">휴대폰번호</label>
-						<input type="text" class="form-control" id="ifmpPhoneNumber" placeholder="휴대폰번호를 입력해주세요." style="margin:10px; height:55px;">
+							  <label class="form-check-label" for="name">이름</label>
+						<input type="text" class="form-control" id="name" placeholder="이름을 입력해주세요." style="margin:10px; height:55px;">
+							  <label class="form-check-label" for="phoneNum">휴대폰번호</label>
+						<input type="text" class="form-control" id="phoneNum" placeholder="휴대폰번호를 입력해주세요." style="margin:10px; height:55px;">
 					
 						<div class="form-check" style="margin-left:10px;">
 							  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
