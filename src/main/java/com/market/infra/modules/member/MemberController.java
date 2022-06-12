@@ -34,7 +34,7 @@ public class MemberController {
 	
 
 	
-	
+	 
 	
 
 	  @RequestMapping(value = "/member/signUp") 
