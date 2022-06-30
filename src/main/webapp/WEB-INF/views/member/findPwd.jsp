@@ -21,7 +21,7 @@
 
 
 
-<title>FindId</title>
+<title>FindPwd</title>
 <style type="text/css">
 </style>
 </head>
@@ -31,7 +31,7 @@
 	    <!-- 이모티콘 버튼 -->
 	
 	<div style="text-align: center; margin-top:100px;">
-		<h4 style="font-weight:bold; ">아이디찾기</h4>
+		<h4 style="font-weight:bold; ">비밀번호찾기</h4>
 		<button class="btn btn" style="height: 50px;" type="button">아이디찾기</button>|
 		<button class="btn btn" style="height: 50px;" type="button">비밀번호찾기</button>
 	</div>	
