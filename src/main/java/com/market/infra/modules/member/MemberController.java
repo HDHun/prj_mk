@@ -43,10 +43,7 @@ public class MemberController {
 		  
 		
 		  
-		
-		/*
-		 * model.addAttribute("codeGender", CodeServiceImpl.selectListCachedCode("16"));
-		 */  
+	
 		return "member/signUp"; 
 		
 		  
@@ -72,12 +69,7 @@ public class MemberController {
 	  
 	  @RequestMapping(value = "/member/findId") public String findId(MemberVo vo, Model model) throws Exception {
 	  
-			/*
-			 * Member item = service.selectOne(vo);
-			 * 
-			 * model.addAttribute("item", item);
-			 */
-	  
+		
 	  return "member/findId"; }
 	 
 	
@@ -92,10 +84,7 @@ public class MemberController {
 		  service.updatePhone(dto);
 		 
 		  System.out.println("vo.ifmmSeq :" + vo.getIfmmSeq());
-			/*
-			 * return "redirect:/member/memberView?ifmmSeq=" +dto.getIfmmSeq();
-			 */
-		  
+			
 		  
 		  redirectAttributes.addFlashAttribute("vo", vo);
 		  return "redirect:/member/memberView"; 
