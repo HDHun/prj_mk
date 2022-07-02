@@ -176,10 +176,6 @@ public class MemberController {
 			return returnMap;
 		}
 
-
-
-	  	
-	  	
 	  	@ResponseBody
 	  	@RequestMapping(value = "/member/logoutProc")
 	  	public Map<String, Object> logoutProc(Member dto, HttpSession httpSession) throws Exception {
