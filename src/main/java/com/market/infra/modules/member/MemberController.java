@@ -31,50 +31,24 @@ public class MemberController {
 
 	@Autowired
 	MemberServiceImpl service;
-	
-
-	
-	 
-	
 
 	  @RequestMapping(value = "/member/signUp") 
 	  public String signUp(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
-		  
-		  
-		
-		  
-	
 		return "member/signUp"; 
 		
 		  
 	  }
 	  @RequestMapping(value = "/member/UserInst") 
 	  public String UserInst(Member dto) throws Exception {
-		  
-		 
-			
 		  	service.insert(dto);
-
-			 
-		  
-		 
-		  
-		 
 		  return "redirect:/member/indexView"; 
-		  
-		  
 	  }
 	
 	  
-	  
 	  @RequestMapping(value = "/member/findId") public String findId(MemberVo vo, Model model) throws Exception {
-	  
-		
-	  return "member/findId"; }
-	 
-	
-	 
-	 
+	  return "member/findId"; 
+	  }
+
 	  @RequestMapping(value = "/member/memberUpdt") 
 	  public String memberUpdt(Member dto, MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
 		  
@@ -82,14 +56,10 @@ public class MemberController {
 		  service.updateAddress(dto); 
 		  service.updateEmail(dto);
 		  service.updatePhone(dto);
-		 
-		  System.out.println("vo.ifmmSeq :" + vo.getIfmmSeq());
-			
-		  
 		  redirectAttributes.addFlashAttribute("vo", vo);
 		  return "redirect:/member/memberView"; 
-		  
 	  }
+	  
 	  @RequestMapping(value = "/member/MemberMultiUele") public String
 	  memberMultiUele(MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
 
@@ -165,14 +135,11 @@ public class MemberController {
 		@RequestMapping(value = "/member/loginProcGoogle")
 		public Map<String, Object> GloginProc(@RequestParam("ifmmName")String name,Member dto, HttpSession httpSession) throws Exception {
 			Map<String, Object> returnMap = new HashMap<String, Object>();
-			
 			System.out.println(name);
 			httpSession.setAttribute("sessName",name);
 			httpSession.setAttribute("sessId","구글 회원입니다");
 			httpSession.setAttribute("sessSeq","구글 회원입니다");
-		
 			returnMap.put("rt", "success");
-			
 			return returnMap;
 		}
 
@@ -182,7 +149,6 @@ public class MemberController {
 	  		Map<String, Object> returnMap = new HashMap<String, Object>();
 	  		httpSession.invalidate();
 	  		returnMap.put("rt","success");
-	  		
 	  		return returnMap;
 	  	}
 
